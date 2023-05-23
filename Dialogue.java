@@ -3,8 +3,8 @@ import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 /**
- * This is the general class for dialogue. It has four attributes, which represent the name of the character speaking, the 
- * image used for the character's icon (since there may be different emoticons), the background image, and the dialogue text. 
+ * This is the general class for dialogue. It has five attributes, which represent the name of the character speaking, the 
+ * image used for the character's icon (since there may be different emoticons), the background image, the dialogue text, and the choices (if any) that the user can pick from. 
  * The Dialogue class is used in Level 1, Level 3 and Level 4.
  */
 public class Dialogue {
@@ -12,15 +12,20 @@ public class Dialogue {
   private BufferedImage characterIcon;
   private BufferedImage backgroundImage;
   private String dialogueText;
+  private ArrayList<String> choices;
   
   /**
    * Note: When passing in the String for the path, just enter the name of the image - the file will automatically be searched for in ./assets/img/
    */
-  public Dialogue(String name, String characterIconPath, String backgroundImagePath, String dialogue){
+  public Dialogue(String name, String characterIconPath, String backgroundImagePath, String dialogue, String[] c){
     characterName = name;
     dialogueText = dialogue;
     characterIcon = ImageIO.read(new File(characterIconPath));
     backgroundImage = ImageIO.read(new File(backgroundImagePath));
+    choices = new ArrayList<String>();
+    for (String s : c){
+      choices.add(s);
+    }
   }
   
   /**
@@ -40,5 +45,9 @@ public class Dialogue {
   
   public String getDialogueText(){
     return dialogueText;
+  }
+  
+  public ArrayList<String> getChoices(){
+    return choices;
   }
 }
