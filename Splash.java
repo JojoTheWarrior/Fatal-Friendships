@@ -47,14 +47,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 state = 1;
             }
             draw.repaint();
-        } else if (state == 1) {
-            x = e.getX();
-            y = e.getY();
-            if (x >= 300 && x <= 500 && y <= 415 && y >= 365) {
-                state = 2;
-            }
-            draw.repaint();
-        }
+        } 
     }
 
     public void mousePressed(MouseEvent e) {
@@ -73,6 +66,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
         if(state == 1){
             if(choice < 2 && e.getKeyChar() == 's') choice ++;
             else if(choice > 0 && e.getKeyChar() == 'w') choice --;
+            else if(e.getKeyChar() == 'm') state += choice + 1;
             draw.repaint();
         }
     }
@@ -151,6 +145,16 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             g.drawString("real game", 150, 170);
         }
 
+        public void credits(Graphics g) {
+            g.setColor(Color.BLACK);
+            g.drawString("real credits", 150, 170);
+        }
+
+        public void exit(Graphics g) {
+            g.setColor(Color.BLACK);
+            g.drawString("bye", 150, 170);
+        }
+
         public void paint(Graphics g) {
             // THIS WILL IMPLEMENT DIFF METHODS BASED ON GAMESTATE
             if (state == 0) {
@@ -159,7 +163,13 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 menu(g);
             } else if (state == 2) {
                 levels(g);
+            } else if (state == 3) {
+                credits(g);
+            }else if (state == 4) {
+                exit(g);
             }
+
+        
         }
     }
 
