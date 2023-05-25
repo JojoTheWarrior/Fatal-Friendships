@@ -175,6 +175,8 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             } else if (state == 4) {
                 exit(g);
             }
+
+        
         }
     }
 
