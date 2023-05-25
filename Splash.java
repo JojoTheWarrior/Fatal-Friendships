@@ -37,6 +37,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     }
 
     public void mouseDragged(MouseEvent e) {
+
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -47,32 +48,30 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 state = 1;
             }
             draw.repaint();
-        } else if (state == 1) {
-            x = e.getX();
-            y = e.getY();
-            if (x >= 300 && x <= 500 && y <= 415 && y >= 365) {
-                state = 2;
-            }
-            draw.repaint();
-        }
+        } 
     }
 
     public void mousePressed(MouseEvent e) {
+
     }
 
     public void mouseReleased(MouseEvent e) {
+
     }
 
     public void mouseEntered(MouseEvent e) {
+
     }
 
     public void mouseExited(MouseEvent e) {
+
     }
 
     public void keyTyped(KeyEvent e) {
         if(state == 1){
             if(choice < 2 && e.getKeyChar() == 's') choice ++;
             else if(choice > 0 && e.getKeyChar() == 'w') choice --;
+            else if(e.getKeyChar() == 'm') state += choice + 1;
             draw.repaint();
         }
     }
@@ -86,26 +85,28 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     }
 
     class Drawing extends JComponent {
-
         public void splashScreen(Graphics g) {
             Font customFont = null;
             try {
                 customFont = Font
                         .createFont(Font.TRUETYPE_FONT,
                                 new File(
-                                        "C:\\Users\\342537420\\Downloads\\Hello\\DeterminationMonoWebRegular-Z5oq.ttf"))
+                                        "./assets/font/DeterminationMonoWebRegular-Z5oq.ttf"))
                         .deriveFont(90f);
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 ge.registerFont(customFont);
             } catch (Exception e) {
+
             }
 
             BufferedImage bg;
             try {
-                bg = ImageIO.read(new File("C:\\Users\\342537420\\Downloads\\Hello\\splash.png"));
+                bg = ImageIO.read(new File("./assets/img/splash.png"));
                 g.drawImage(bg, 0, 0, 800, 500, null);
             } catch (Exception e) {
+
             }
+
             g.setColor(new Color(140, 70, 70));
             g.setFont(customFont);
             g.drawString("friendships", 150, 170);
@@ -123,7 +124,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 customFont = Font
                         .createFont(Font.TRUETYPE_FONT,
                                 new File(
-                                        "C:\\Users\\342537420\\Downloads\\Hello\\DeterminationMonoWebRegular-Z5oq.ttf"))
+                                        "./assets/font/DeterminationMonoWebRegular-Z5oq.ttf"))
                         .deriveFont(90f);
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 ge.registerFont(customFont);
@@ -132,7 +133,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
 
             BufferedImage bg;
             try {
-                bg = ImageIO.read(new File("C:\\Users\\342537420\\Downloads\\Hello\\menu.png"));
+                bg = ImageIO.read(new File("./assets/img/menu.png"));
                 g.drawImage(bg, 0, 0, 800, 500, null);
             } catch (Exception e) {
             }
@@ -151,6 +152,16 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             g.drawString("real game", 150, 170);
         }
 
+        public void credits(Graphics g) {
+            g.setColor(Color.BLACK);
+            g.drawString("real credits", 150, 170);
+        }
+
+        public void exit(Graphics g) {
+            g.setColor(Color.BLACK);
+            g.drawString("bye", 150, 170);
+        }
+
         public void paint(Graphics g) {
             // THIS WILL IMPLEMENT DIFF METHODS BASED ON GAMESTATE
             if (state == 0) {
@@ -159,6 +170,10 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 menu(g);
             } else if (state == 2) {
                 levels(g);
+            } else if (state == 3) {
+                credits(g);
+            } else if (state == 4) {
+                exit(g);
             }
         }
     }
@@ -166,5 +181,4 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     public static void main(String[] args) {
         new Splash();
     }
-
 }

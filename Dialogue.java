@@ -1,7 +1,11 @@
-import java.util.*;
-import java.io.*;
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import javax.swing.*;
+import javax.imageio.*;
+import java.io.*;
+import java.util.*;
+
 /**
  * This is the general class for dialogue. It has five attributes, which represent the name of the character speaking, the 
  * image used for the character's icon (since there may be different emoticons), the background image, the dialogue text, and the choices (if any) that the user can pick from. 
@@ -17,11 +21,16 @@ public class Dialogue {
   /**
    * Note: When passing in the String for the path, just enter the name of the image - the file will automatically be searched for in ./assets/img/
    */
-  public Dialogue(String name, String characterIconPath, String backgroundImagePath, String dialogue, String[] c){
+  public Dialogue(String name, String dialogue, String[] c, String characterIconPath, String backgroundImagePath){
     characterName = name;
     dialogueText = dialogue;
-    characterIcon = ImageIO.read(new File(characterIconPath));
-    backgroundImage = ImageIO.read(new File(backgroundImagePath));
+    try {
+      characterIcon = ImageIO.read(new File(characterIconPath));
+      backgroundImage = ImageIO.read(new File(backgroundImagePath));
+    } catch (Exception e){
+
+    }
+    
     choices = new ArrayList<String>();
     for (String s : c){
       choices.add(s);
