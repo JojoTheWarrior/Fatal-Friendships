@@ -17,16 +17,17 @@ public class Dialogue {
   private BufferedImage backgroundImage;
   private String dialogueText;
   private ArrayList<String> choices;
+  private ArrayList<Integer> lead;
   
   /**
    * Note: When passing in the String for the path, just enter the name of the image - the file will automatically be searched for in ./assets/img/
    */
-  public Dialogue(String name, String dialogue, String[] c, String characterIconPath, String backgroundImagePath){
+  public Dialogue(String name, String dialogue, String[] c, int[] l, String characterIconPath, String backgroundImagePath){
     characterName = name;
     dialogueText = dialogue;
     try {
-      characterIcon = ImageIO.read(new File(characterIconPath));
-      backgroundImage = ImageIO.read(new File(backgroundImagePath));
+      characterIcon = ImageIO.read(new File("./assets/img/" + characterIconPath + ".png"));
+      backgroundImage = ImageIO.read(new File("./assets/img/" + backgroundImagePath + ".png"));
     } catch (Exception e){
 
     }
@@ -35,6 +36,33 @@ public class Dialogue {
     for (String s : c){
       choices.add(s);
     }
+
+    lead = new ArrayList<Integer>();
+    for (int i : l){
+      lead.add(i);
+    }
+  }
+
+  /**
+   * Overloaded method for when there is only one lead option.
+   */
+  public Dialogue(String name, String dialogue, String[] c, int l, String characterIconPath, String backgroundImagePath){
+    characterName = name;
+    dialogueText = dialogue;
+    try {
+      characterIcon = ImageIO.read(new File("./assets/img/" + characterIconPath + ".png"));
+      backgroundImage = ImageIO.read(new File("./assets/img/" + backgroundImagePath + ".png"));
+    } catch (Exception e){
+
+    }
+    
+    choices = new ArrayList<String>();
+    for (String s : c){
+      choices.add(s);
+    }
+
+    lead = new ArrayList<Integer>();
+    lead.add(l);
   }
   
   /**
@@ -58,5 +86,9 @@ public class Dialogue {
   
   public ArrayList<String> getChoices(){
     return choices;
+  }
+
+  public ArrayList<Integer> getLead(){
+    return lead;
   }
 }

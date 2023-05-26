@@ -19,7 +19,11 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
         draw.addMouseListener(this);
         draw.addKeyListener(this);
         draw.setFocusable(true);
-        frame.add(draw);
+        // frame.add(draw);
+
+        LevelOne L1 = new LevelOne();
+        frame.add(L1.getFrame(), BorderLayout.CENTER);
+
         frame.setVisible(true);
     }
 
