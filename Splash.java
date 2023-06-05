@@ -13,8 +13,10 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     int choice = 0;
     int [][] maze = {{1,2,3},{4,5,6},{7,8,9}};
     int [][] mazeEx = new int[3][3];
+    int [][] canExit = new int [3][3];
     int c = 0, d = 0;
     boolean predialogue, left, right, down, up;
+    String answer;
 
     public Splash() {
         JFrame frame = new JFrame("Fatal Friendships");
@@ -83,7 +85,11 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                     predialogue = false;
                     mazeloc = 1;
                 }
-            }
+            } else if(mazeloc == 1){
+                if(e.getKeyChar() == 'm'){
+                    if(answer.equals("Manipulation and disrespect")) canExit[0][0] = 1;
+                }
+            }   
             draw.repaint();
 
         }
@@ -118,7 +124,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 customFont = Font
                         .createFont(Font.TRUETYPE_FONT,
                                 new File(
-                                        "C:\\Users\\atlan\\Downloads\\ISP 2023\\DeterminationMonoWebRegular-Z5oq.ttf"))
+                                        "DeterminationMonoWebRegular-Z5oq.ttf"))
                         .deriveFont(90f);
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 ge.registerFont(customFont);
@@ -148,7 +154,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 customFont = Font
                         .createFont(Font.TRUETYPE_FONT,
                                 new File(
-                                        "C:\\Users\\atlan\\Downloads\\ISP 2023\\DeterminationMonoWebRegular-Z5oq.ttf"))
+                                        "DeterminationMonoWebRegular-Z5oq.ttf"))
                         .deriveFont(90f);
                 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
                 ge.registerFont(customFont);
@@ -184,11 +190,10 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 g.drawString("press <m> to continue", 100, 150);
             } else {
                 g.drawRect(100,100,500,300);
-                if(a >= 50) mazeloc = 2;
-                if(left) a--;
-                if(right) a++;
-                if(up)  b--;
-                if(down) b++;
+                if(left) a-=10;
+                if(right) a+=10;
+                if(up)  b-=10;
+                if(down) b+=10;
                 g.drawRect(a, b, 10, 10);
                 g.drawRect(500, 300, 80, 80);
 
@@ -206,15 +211,31 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
             
             if(mazeloc == 1){
+                mazeEx[0][0] = 1;
                 g.drawString("ROOM 1", 100, 100);
                 g.drawString("What are common characteristics of toxic friendships?", 100, 150);
+                answer = "generic answer";
+                if(canExit[0][0] == 0){
+                if(a > 200 && a < 250 && b > 200 && b < 250) answer = "Trust and mutual support";
+                else if(a > 200 && a < 250 && b > 250 && b < 300) answer = "Open communication and compromise";
+                else if(a > 250 && a < 300 && b > 200 && b < 250) answer = "Manipulation and disrespect";
+                else if(a > 250 && a < 300 && b > 250 && b < 300) answer = "Understanding and empathy";
+                else answer = "";
+                }
+                g.drawString(answer, 100, 180);
                 g.drawRect(200,200,50,50);
                 g.drawRect(200,250,50,50);
                 g.drawRect(250,200,50,50);
                 g.drawRect(250,250,50,50);
+                if(canExit[0][0]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                if(a >= 500) mazeloc = 2;
+                if(b >= 400) mazeloc = 4;}
+
             }
 
             if(mazeloc == 2){
+                mazeEx[0][1] = 1;
                 g.drawString("ROOM 2", 100, 100);
             }
         }
