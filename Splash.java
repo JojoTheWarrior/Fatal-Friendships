@@ -212,6 +212,8 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             
             if(mazeloc == 1){
                 mazeEx[0][0] = 1;
+                a = 0;
+                b = 0;
                 g.drawString("ROOM 1", 100, 100);
                 g.drawString("What are common characteristics of toxic friendships?", 100, 150);
                 answer = "generic answer";
@@ -229,14 +231,108 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 g.drawRect(250,250,50,50);
                 if(canExit[0][0]!=0){
                     g.drawString("CAN LEAVE", 200, 400);
-                if(a >= 500) mazeloc = 2;
-                if(b >= 400) mazeloc = 4;}
+                    changeRoom();
+                }
 
             }
 
             if(mazeloc == 2){
+                a = 0;
+                b = 0;
                 mazeEx[0][1] = 1;
                 g.drawString("ROOM 2", 100, 100);
+                if(canExit[0][1]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 3){
+                a = 0;
+                b = 0;
+                mazeEx[0][2] = 1;
+                g.drawString("ROOM 3", 100, 100);
+                if(canExit[0][2]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 4){
+                a = 0;
+                b = 0;
+                mazeEx[1][0] = 1;
+                g.drawString("ROOM 4", 100, 100);
+                if(canExit[1][0]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 5){
+                a = 0;
+                b = 0;
+                mazeEx[1][1] = 1;
+                g.drawString("ROOM 5", 100, 100);
+                if(canExit[1][1]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 6){
+                a = 0;
+                b = 0;
+                mazeEx[1][2] = 1;
+                g.drawString("ROOM 6", 100, 100);
+                if(canExit[1][2]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 7){
+                a = 0;
+                b = 0;
+                mazeEx[2][0] = 1;
+                g.drawString("ROOM 7", 100, 100);
+                if(canExit[2][0]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 8){
+                a = 0;
+                b = 0;
+                mazeEx[2][1] = 1;
+                g.drawString("ROOM 8", 100, 100);
+                if(canExit[2][1]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+
+            if(mazeloc == 9){
+                a = 0;
+                b = 0;
+                mazeEx[2][2] = 1;
+                g.drawString("ROOM 9", 100, 100);
+                if(canExit[2][2]!=0){
+                    g.drawString("CAN LEAVE", 200, 400);
+                    changeRoom();
+                }
+            }
+        }
+
+        public void changeRoom(){
+            if(a >= 500){
+                d++;
+                mazeloc = maze[c][d];
+            }
+            if(b >= 400){
+                c++;
+                mazeloc = maze[c][d];
             }
         }
 
