@@ -15,7 +15,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     int [][] mazeEx = new int[3][3];
     int [][] canExit = new int [3][3];
     int c = 0, d = 0;
-    boolean predialogue, left, right, down, up;
+    boolean predialogue, left, right, down, up, exit = false;
     String answer;
 
     public Splash() {
@@ -87,7 +87,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 }
             } else if(mazeloc == 1){
                 if(e.getKeyChar() == 'm'){
-                    if(answer.equals("Manipulation and disrespect")) canExit[0][0] = 1;
+                    if(answer.equals("* Manipulation and disrespect")) canExit[0][0] = 1;
                 }
             }   
             draw.repaint();
@@ -189,12 +189,18 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 g.drawString("heading home, james gets lost in his thoughts", 100, 100);
                 g.drawString("press <m> to continue", 100, 150);
             } else {
-                g.drawRect(100,100,500,300);
+                mazeRoom(g);
                 if(left) a-=10;
                 if(right) a+=10;
                 if(up)  b-=10;
                 if(down) b+=10;
-                g.drawRect(a, b, 10, 10);
+                BufferedImage icon;
+                try {
+                    icon = ImageIO.read(new File("icon.png"));
+                    g.drawImage(icon, a, b, 75, 75, null);
+                } catch (Exception e) {
+                }
+                
                 g.drawRect(500, 300, 80, 80);
 
                 //MAP SQUARES
@@ -210,35 +216,66 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 }
             }
             
+        }
+
+        public void mazeRoom(Graphics g){
+            Font customFont = null;
+            try {
+                customFont = Font
+                        .createFont(Font.TRUETYPE_FONT,
+                                new File(
+                                        "DeterminationMonoWebRegular-Z5oq.ttf"))
+                        .deriveFont(27f);
+                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                ge.registerFont(customFont);
+            } catch (Exception e) {
+            }
+            g.setColor(new Color(140,70,70));
+            g.setFont(customFont);
             if(mazeloc == 1){
-                mazeEx[0][0] = 1;
-                a = 0;
-                b = 0;
-                g.drawString("ROOM 1", 100, 100);
-                g.drawString("What are common characteristics of toxic friendships?", 100, 150);
-                answer = "generic answer";
-                if(canExit[0][0] == 0){
-                if(a > 200 && a < 250 && b > 200 && b < 250) answer = "Trust and mutual support";
-                else if(a > 200 && a < 250 && b > 250 && b < 300) answer = "Open communication and compromise";
-                else if(a > 250 && a < 300 && b > 200 && b < 250) answer = "Manipulation and disrespect";
-                else if(a > 250 && a < 300 && b > 250 && b < 300) answer = "Understanding and empathy";
-                else answer = "";
+                BufferedImage r1;
+                try {
+                    if(exit) r1 = ImageIO.read(new File("r1.png"));
+                    else r1 = ImageIO.read(new File("er.png"));
+                    g.drawImage(r1, 0, 0, 800, 500, null);
+                } catch (Exception e) {
                 }
-                g.drawString(answer, 100, 180);
-                g.drawRect(200,200,50,50);
-                g.drawRect(200,250,50,50);
-                g.drawRect(250,200,50,50);
-                g.drawRect(250,250,50,50);
+                mazeEx[0][0] = 1;
+                if(!exit){
+                    g.drawString("What are common", 200, 157);
+                    g.drawString("characteristics of toxic", 200, 184);
+                    g.drawString("friendships?", 200, 211);
+                } else {
+                    g.drawString("smth here", 200, 157);
+                }
+                answer = "";
+                if(canExit[0][0] == 0){
+                    g.setColor(Color.WHITE);
+                if(a > 280 && a < 330 && b > 210 && b < 260){
+                    g.fillRect(200,130,350,85);
+                    answer = "* Trust and mutual support";
+                } else if(a > 280 && a < 330 && b > 300 && b < 330) {
+                    g.fillRect(200,130,350,85);
+                    answer = "* Open communication";
+                } else if(a > 410 && a < 460 && b > 210 && b < 260) {
+                    g.fillRect(200,130,350,85);
+                    answer = "* Manipulation and disrespect";
+                } else if(a > 410 && a < 460 && b > 300 && b < 330) {
+                    g.fillRect(200,130,350,85);
+                    answer = "* Understanding and empathy";
+                } else answer = "";
+                }
+                g.setColor(new Color(140,70,70));
+                g.drawString(answer, 200, 157);
                 if(canExit[0][0]!=0){
-                    g.drawString("CAN LEAVE", 200, 400);
                     changeRoom();
+                } else {
+                    exit = false;
                 }
 
             }
 
             if(mazeloc == 2){
-                a = 0;
-                b = 0;
                 mazeEx[0][1] = 1;
                 g.drawString("ROOM 2", 100, 100);
                 if(canExit[0][1]!=0){
@@ -248,8 +285,6 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
 
             if(mazeloc == 3){
-                a = 0;
-                b = 0;
                 mazeEx[0][2] = 1;
                 g.drawString("ROOM 3", 100, 100);
                 if(canExit[0][2]!=0){
@@ -259,8 +294,6 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
 
             if(mazeloc == 4){
-                a = 0;
-                b = 0;
                 mazeEx[1][0] = 1;
                 g.drawString("ROOM 4", 100, 100);
                 if(canExit[1][0]!=0){
@@ -326,13 +359,18 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
         }
 
         public void changeRoom(){
-            if(a >= 500){
+            exit = true;
+            if(a >= 800){
                 d++;
                 mazeloc = maze[c][d];
+                a = 300;
+                b = 300;
             }
             if(b >= 400){
                 c++;
                 mazeloc = maze[c][d];
+                a = 300;
+                b = 300;
             }
         }
 
