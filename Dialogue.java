@@ -92,3 +92,4 @@ public class Dialogue {
     return lead;
   }
 }
+  
