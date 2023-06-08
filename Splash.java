@@ -96,6 +96,12 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 if(e.getKeyChar() == 'm'){
                     if(answer.equals("* communicate openly and")) canExit[0][1] = 1;
                 }
+            } else if(mazeloc == 3){
+
+            } else if (mazeloc == 4){
+                if(e.getKeyChar() == 'm'){
+                    if(answer.equals("* Trust promotes open")) canExit[1][0] = 1;
+                }
             }
             draw.repaint();
 
@@ -206,8 +212,6 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
         public void levelTwo (Graphics g) {
             Color explored = new Color(140,70,70, 70);
             Color now = new Color(140,70,70);
-            c = 0;
-            d= 0;
             if(mazeloc == -1){
                 g.drawString("tutorial", 100, 100);
             }
@@ -354,16 +358,16 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 g.drawString(answer, 200, 157);
                 switch(anschoice){
                     case 1:
-                        g.drawString("personal growth", 200, 184);
+                        g.drawString("  personal growth", 200, 184);
                         break;
                     case 2:
-                        g.drawString("sake of spontaneity", 200, 184);
+                        g.drawString("  sake of spontaneity", 200, 184);
                         break;
                     case 3:
-                        g.drawString("honour boundaries", 200, 184);
+                        g.drawString("  honour boundaries", 200, 184);
                         break;
                     case 4:
-                        g.drawString("maintain control", 200, 184);
+                        g.drawString("  maintain control", 200, 184);
                         break;
                 }
 
@@ -375,15 +379,76 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
 
             if(mazeloc == 3){
+
+                draw.repaint();
+                BufferedImage r3;
+                try {
+                    if(exit) r3 = ImageIO.read(new File("r3.png"));
+                    else r3 = ImageIO.read(new File("er.png"));
+                    g.drawImage(r3, 0, 0, 800, 500, null);
+                } catch (Exception e) {
+                }
                 mazeEx[0][2] = 1;
-                g.drawString("ROOM 3", 100, 100);
+
+                if(!exit){
+                    g.drawString("Instead of using your friends,", 200, 157);
+                    g.drawString("how should you value them?", 200, 184);
+                } else {
+                    g.drawString("Good job! Friends should be", 200, 157);
+                    g.drawString("people you can trust and", 200, 184);
+                    g.drawString("openly communicate with.", 200, 211);
+                }
+
+                answer = "";
+                anschoice = 0;
+                if(canExit[0][2] == 0){
+                    g.setColor(Color.WHITE);
+                if(a > 280 && a < 330 && b > 210 && b < 260){
+                    g.fillRect(200,130,420,85);
+                    anschoice = 1;
+                    answer = "* Recognizing their worth,";
+                } else if(a > 280 && a < 330 && b > 300 && b < 330) {
+                    g.fillRect(200,130,420,85);
+                    anschoice = 2;
+                    answer = "* Prioritizing your own needs";
+                } else if(a > 410 && a < 460 && b > 210 && b < 260) {
+                    g.fillRect(200,130,420,85);
+                    anschoice = 3;
+                    answer = "* Manipulating and taking ";
+                } else if(a > 410 && a < 460 && b > 300 && b < 330) {
+                    g.fillRect(200,130,420  ,85);
+                    anschoice = 4;
+                    answer = "* Using them to achieve";
+                } else answer = "";
+                }
+                g.setColor(new Color(140,70,70));
+                g.drawString(answer, 200, 157);
+                switch(anschoice){
+                    case 1:
+                        g.drawString("  appreciating the friendship,", 200, 184);
+                        g.drawString("  and supporting them", 200, 211);
+                        break;
+                    case 2:
+                        g.drawString("  and desires above theirs", 200, 184);
+                        break;
+                    case 3:
+                        g.drawString("  advantage of their kindness", 200, 184);
+                        break;
+                    case 4:
+                        g.drawString("  personal goals without", 200, 184);
+                        g.drawString("  considering their feelings", 200, 211);
+                        break;
+                }
+
                 if(canExit[0][2]!=0){
-                    g.drawString("CAN LEAVE", 200, 400);
                     changeRoom();
+                } else {
+                    exit = false;
                 }
             }
 
             if(mazeloc == 4){
+                draw.repaint();
                 BufferedImage r4;
                 try {
                     if(exit) r4 = ImageIO.read(new File("r4.png"));
@@ -392,6 +457,60 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 } catch (Exception e) {
                 }
                 mazeEx[1][0] = 1;
+
+                if(!exit){
+                    g.drawString("Why is trust important in a", 200, 157);
+                    g.drawString("healthy friendship?", 200, 184);
+                } else {
+                    g.drawString("Good job! Friends should be", 200, 157);
+                    g.drawString("people you can trust and", 200, 184);
+                    g.drawString("openly communicate with.", 200, 211);
+                }
+
+                answer = "";
+                anschoice = 0;
+                if(canExit[1][0] == 0){
+                    g.setColor(Color.WHITE);
+                if(a > 280 && a < 330 && b > 210 && b < 260){
+                    g.fillRect(200,130,420,85);
+                    anschoice = 1;
+                    answer = "* Trust allows friends to";
+                } else if(a > 280 && a < 330 && b > 300 && b < 330) {
+                    g.fillRect(200,130,420,85);
+                    anschoice = 2;
+                    answer = "* Trust creates a sense of";
+                } else if(a > 410 && a < 460 && b > 210 && b < 260) {
+                    g.fillRect(200,130,420,85);
+                    anschoice = 3;
+                    answer = "* Trust leads to frequent";
+                } else if(a > 410 && a < 460 && b > 300 && b < 330) {
+                    g.fillRect(200,130,420  ,85);
+                    anschoice = 4;
+                    answer = "* Trust promotes open";
+                } else answer = "";
+                }
+                g.setColor(new Color(140,70,70));
+                g.drawString(answer, 200, 157);
+                switch(anschoice){
+                    case 1:
+                        g.drawString("  control and manipulate each", 200, 184);
+                        g.drawString("  other", 200, 211);
+                        break;
+                    case 2:
+                        g.drawString("  dependency and reliance on", 200, 184);
+                        g.drawString("  one another", 200, 211);
+                        break;
+                    case 3:
+                        g.drawString("  conflicts and", 200, 184);
+                        g.drawString("  misunderstandings", 200, 211);
+                        break;
+                    case 4:
+                        g.drawString("  communication and", 200, 184);
+                        g.drawString("  vulnerability", 200, 211);
+                        break;
+                }
+
+
                 if(canExit[1][0]!=0){
                     changeRoom();
                 } else {
@@ -400,12 +519,9 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
 
             if(mazeloc == 5){
-                a = 0;
-                b = 0;
+
                 mazeEx[1][1] = 1;
-                g.drawString("ROOM 5", 100, 100);
                 if(canExit[1][1]!=0){
-                    g.drawString("CAN LEAVE", 200, 400);
                     changeRoom();
                 }
             }
@@ -457,13 +573,14 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
 
         public void changeRoom(){
             exit = true;
-            if(a >= 800){
+            if(a >= 700 && d < 3){
                 d++;
                 mazeloc = maze[c][d];
+                System.out.println(d);
                 a = 141;
                 b = 312;
             }
-            if(b >= 400){
+            if(b >= 400 && c < 2){
                 c++;
                 mazeloc = maze[c][d];
                 a = 141;
