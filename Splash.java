@@ -8,7 +8,7 @@ import java.io.*;
 public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     Drawing draw = new Drawing();
     int x, y, z = 0;
-    int a = 0, b = 0;
+    int a = 141, b = 312;
     int state = 0, mazeloc = -1;
     int choice = 0;
     int [][] maze = {{1,2,3},{4,5,6},{7,8,9}};
@@ -55,6 +55,8 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
             draw.repaint();
         } 
+
+        System.out.println(e.getX()+" "+e.getY());
     }
 
     public void mousePressed(MouseEvent e) {
@@ -97,10 +99,22 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
 
     public void keyPressed(KeyEvent e) {
         if(state == 2){
-            if (e.getKeyChar() == 'w') up = true;
-            if (e.getKeyChar() == 'a') left = true;
-            if (e.getKeyChar() == 's') down = true;
-            if (e.getKeyChar() == 'd') right = true;
+
+            if(!exit){
+                if(b > 93 && e.getKeyChar() == 'w') up = true;
+                else up = false;
+                if (a > 121 && e.getKeyChar() == 'a') left = true;
+                else left = false;
+                if (b < 320 && e.getKeyChar() == 's') down = true;
+                else down = false;
+                if (a < 590 && e.getKeyChar() == 'd') right = true;
+                else right = false;
+            } else {
+                if (e.getKeyChar() == 'w') up = true;
+                if (e.getKeyChar() == 'a') left = true;
+                if (e.getKeyChar() == 's') down = true;
+                if (e.getKeyChar() == 'd') right = true;
+            }
 
             draw.repaint();
         }
@@ -108,10 +122,17 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
 
     public void keyReleased(KeyEvent e) {
         if(state == 2){
-            if (e.getKeyChar() == 'w') up = false;
-            if (e.getKeyChar() == 'a') left = false;
-            if (e.getKeyChar() == 's') down = false;
-            if (e.getKeyChar() == 'd') right = false;
+            if(!exit){
+                if (e.getKeyChar() == 'w') up = false;
+                if (e.getKeyChar() == 'a') left = false;
+                if (e.getKeyChar() == 's') down = false;
+                if (e.getKeyChar() == 'd') right = false;
+            } else {
+                if (e.getKeyChar() == 'w') up = false;
+                if (e.getKeyChar() == 'a') left = false;
+                if (e.getKeyChar() == 's') down = false;
+                if (e.getKeyChar() == 'd') right = false;
+            }
             draw.repaint();
         }
     }
@@ -201,7 +222,12 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 } catch (Exception e) {
                 }
                 
-                g.drawRect(500, 300, 80, 80);
+                BufferedImage map;
+                try {
+                    map = ImageIO.read(new File("minimap.png"));
+                    g.drawImage(map, 600, 330, 100, 100, null);
+                } catch (Exception e) {
+                }
 
                 //MAP SQUARES
                 for(int e = 0; e < 3; e++){
@@ -209,9 +235,9 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                         if(mazeloc == maze[e][f]) g.setColor(now);
                         else if(mazeEx[e][f]!=0) g.setColor(explored);
                         else g.setColor(Color.WHITE);
-                        g.fillRect(505+f*25,305+e*25, 20, 20);
+                        g.fillRect(615+f*25,345+e*25, 20, 20);
                         g.setColor(now);
-                        g.drawRect(505+f*25,305+e*25, 20, 20);
+                        g.drawRect(615+f*25,345+e*25, 20, 20);
                     }
                 }
             }
@@ -246,7 +272,9 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                     g.drawString("characteristics of toxic", 200, 184);
                     g.drawString("friendships?", 200, 211);
                 } else {
-                    g.drawString("smth here", 200, 157);
+                    g.drawString("good job! manipulation and", 200, 157);
+                    g.drawString("disrespect in a relationship", 200, 184);
+                    g.drawString("are signs that it may be toxic", 200, 211);
                 }
                 answer = "";
                 if(canExit[0][0] == 0){
@@ -276,11 +304,50 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
 
             if(mazeloc == 2){
+                draw.repaint();
+                BufferedImage r2;
+                try {
+                    if(exit) r2 = ImageIO.read(new File("r2.png"));
+                    else r2 = ImageIO.read(new File("er.png"));
+                    g.drawImage(r2, 0, 0, 800, 500, null);
+                } catch (Exception e) {
+                }
                 mazeEx[0][1] = 1;
-                g.drawString("ROOM 2", 100, 100);
+                
+                if(!exit){
+                    g.drawString("How do healthy friends respect", 200, 157);
+                    g.drawString("each others' boundaries?", 200, 184);
+                } else {
+                    g.drawString("good job! manipulation and", 200, 157);
+                    g.drawString("disrespect in a relationship", 200, 184);
+                    g.drawString("are signs that it may be toxic", 200, 211);
+                }
+
+                answer = "";
+                if(canExit[0][1] == 0){
+                    g.setColor(Color.WHITE);
+                if(a > 280 && a < 330 && b > 210 && b < 260){
+                    g.fillRect(200,130,370,85);
+                    answer = "* push boundaries to encourage personal growth";
+                } else if(a > 280 && a < 330 && b > 300 && b < 330) {
+                    g.fillRect(200,130,370,85);
+                    answer = "* ignore boundaries for the sake of spontaneity";
+                } else if(a > 410 && a < 460 && b > 210 && b < 260) {
+                    g.fillRect(200,130,370,85);
+                    answer = "* communicate openly and honour boundaries";
+                } else if(a > 410 && a < 460 && b > 300 && b < 330) {
+                    g.fillRect(200,130,370,85);
+                    answer = "* manipulate boundaries to maintain control";
+                } else answer = "";
+                }
+                g.setColor(new Color(140,70,70));
+                g.drawString(answer, 200, 157);
+
                 if(canExit[0][1]!=0){
                     g.drawString("CAN LEAVE", 200, 400);
                     changeRoom();
+                } else {
+                    exit = false;
                 }
             }
 
@@ -294,11 +361,18 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             }
 
             if(mazeloc == 4){
+                BufferedImage r4;
+                try {
+                    if(exit) r4 = ImageIO.read(new File("r4.png"));
+                    else r4 = ImageIO.read(new File("er.png"));
+                    g.drawImage(r4, 0, 0, 800, 500, null);
+                } catch (Exception e) {
+                }
                 mazeEx[1][0] = 1;
-                g.drawString("ROOM 4", 100, 100);
                 if(canExit[1][0]!=0){
-                    g.drawString("CAN LEAVE", 200, 400);
                     changeRoom();
+                } else {
+                    exit = false;
                 }
             }
 
@@ -363,14 +437,14 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
             if(a >= 800){
                 d++;
                 mazeloc = maze[c][d];
-                a = 300;
-                b = 300;
+                a = 141;
+                b = 312;
             }
             if(b >= 400){
                 c++;
                 mazeloc = maze[c][d];
-                a = 300;
-                b = 300;
+                a = 141;
+                b = 312;
             }
         }
 
