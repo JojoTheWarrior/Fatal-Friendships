@@ -17,6 +17,7 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
     int c = 0, d = 0;
     boolean predialogue, left, right, down, up, exit = false;
     String answer;
+    int anschoice;
 
     public Splash() {
         JFrame frame = new JFrame("Fatal Friendships");
@@ -91,7 +92,11 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                 if(e.getKeyChar() == 'm'){
                     if(answer.equals("* Manipulation and disrespect")) canExit[0][0] = 1;
                 }
-            }   
+            }  else if(mazeloc == 2){
+                if(e.getKeyChar() == 'm'){
+                    if(answer.equals("* communicate openly and")) canExit[0][1] = 1;
+                }
+            }
             draw.repaint();
 
         }
@@ -318,33 +323,51 @@ public class Splash implements MouseMotionListener, MouseListener, KeyListener {
                     g.drawString("How do healthy friends respect", 200, 157);
                     g.drawString("each others' boundaries?", 200, 184);
                 } else {
-                    g.drawString("good job! manipulation and", 200, 157);
-                    g.drawString("disrespect in a relationship", 200, 184);
-                    g.drawString("are signs that it may be toxic", 200, 211);
+                    g.drawString("good job! it is important to", 200, 157);
+                    g.drawString("communicate with and respect", 200, 184);
+                    g.drawString("your friends", 200, 211);
                 }
 
                 answer = "";
+                anschoice = 0;
                 if(canExit[0][1] == 0){
                     g.setColor(Color.WHITE);
                 if(a > 280 && a < 330 && b > 210 && b < 260){
-                    g.fillRect(200,130,370,85);
-                    answer = "* push boundaries to encourage personal growth";
+                    g.fillRect(200,130,420,85);
+                    anschoice = 1;
+                    answer = "* push boundaries to encourage";
                 } else if(a > 280 && a < 330 && b > 300 && b < 330) {
-                    g.fillRect(200,130,370,85);
-                    answer = "* ignore boundaries for the sake of spontaneity";
+                    g.fillRect(200,130,420,85);
+                    anschoice = 2;
+                    answer = "* ignore boundaries for the";
                 } else if(a > 410 && a < 460 && b > 210 && b < 260) {
-                    g.fillRect(200,130,370,85);
-                    answer = "* communicate openly and honour boundaries";
+                    g.fillRect(200,130,420,85);
+                    anschoice = 3;
+                    answer = "* communicate openly and";
                 } else if(a > 410 && a < 460 && b > 300 && b < 330) {
-                    g.fillRect(200,130,370,85);
-                    answer = "* manipulate boundaries to maintain control";
+                    g.fillRect(200,130,420  ,85);
+                    anschoice = 4;
+                    answer = "* manipulate boundaries to";
                 } else answer = "";
                 }
                 g.setColor(new Color(140,70,70));
                 g.drawString(answer, 200, 157);
+                switch(anschoice){
+                    case 1:
+                        g.drawString("personal growth", 200, 184);
+                        break;
+                    case 2:
+                        g.drawString("sake of spontaneity", 200, 184);
+                        break;
+                    case 3:
+                        g.drawString("honour boundaries", 200, 184);
+                        break;
+                    case 4:
+                        g.drawString("maintain control", 200, 184);
+                        break;
+                }
 
                 if(canExit[0][1]!=0){
-                    g.drawString("CAN LEAVE", 200, 400);
                     changeRoom();
                 } else {
                     exit = false;
