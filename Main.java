@@ -5,20 +5,31 @@ import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
 
+/** 
+ * Driver class - displays an object of the Screen class and contains the variables representing the user's important choices throughout the game.
+ */
 public class Main implements MouseMotionListener, MouseListener, KeyListener {
+    /** Global version of the game currently being displayed, can be seen in all Screen subclasses. */
     public static Main game;
 
-    // 0 is splash, 1 is level one, 2 is level 2, 3 is level 3
+    /** The state of the game. */
     public int state;
+    /** The choice in the main menu. */
     public int choice;
+    /** Whether the character spoke honestly to Daniel. */
     public boolean spoke_to_daniel = false;
+    /** The level that the user is on (progress saves). */
     public int level;
 
-    JFrame frame;
-    JPanel panel;
+    /** Main window being displayed. */
+    public JFrame frame;
+    /** The content panel - the only JPanel that frame contains. */
+    public JPanel panel;
 
-    Screen currentScreen;
+    /** Screne currently being displayed. */
+    public Screen currentScreen;
 
+    /** Creates a new instance of the game. */
     public Main() {
         state = 0;
         choice = 0;
@@ -100,6 +111,9 @@ public class Main implements MouseMotionListener, MouseListener, KeyListener {
 
     }
 
+    /**
+     * Game driver.
+     */
     public static void main(String[] args) {
         game = new Main();
     }
