@@ -12,15 +12,28 @@ import java.util.*;
  * The Dialogue class is used in Level 1, Level 2, and Level 3.
  */
 public class Dialogue {
+  /** Character speaking. */
   private String characterName;
+  /** Emoticon of the person speaking. */
   private BufferedImage characterIcon;
+  /** Background image. */
   private BufferedImage backgroundImage;
+  /** Dialogue text. */
   private String dialogueText;
+  /** List of choices. */
   private ArrayList<String> choices;
+  /** List of where each choice leads to. */
   private ArrayList<Integer> lead;
   
   /**
-   * Note: When passing in the String for the path, just enter the name of the image - the file will automatically be searched for in ./assets/img/
+   * Note: When passing in the String for the path, just enter the name of the image - the file will automatically be searched for in ./assets/img/ and the .png extension will be added.
+   * 
+   * @param name Character speaking.
+   * @param dialogue Dialogue text.
+   * @param c List of choices.
+   * @param l List of where each choice leads to.
+   * @param characterIconPath Emoticon of the person speaking.
+   * @param backgroundImagePath Background image.
    */
   public Dialogue(String name, String dialogue, String[] c, int[] l, String characterIconPath, String backgroundImagePath){
     characterName = name;
@@ -45,6 +58,12 @@ public class Dialogue {
 
   /**
    * Overloaded method for when there is only one lead option.
+   * @param name Character speaking.
+   * @param dialogue Dialogue text.
+   * @param c List of choices.
+   * @param l Where choosing any option leads to.
+   * @param characterIconPath Emoticon of the person speaking.
+   * @param backgroundImagePath Background image.
    */
   public Dialogue(String name, String dialogue, String[] c, int l, String characterIconPath, String backgroundImagePath){
     characterName = name;
@@ -66,28 +85,43 @@ public class Dialogue {
   }
   
   /**
-   * Get methods for all the attributes.
+   * @return Character's name.
    */
   public String getCharacterName(){
     return characterName;
   }
   
+  /**
+   * @return Character's icon.
+   */
   public BufferedImage getCharacterIcon(){
     return characterIcon;
   }
   
+  /**
+   * @return Background image.
+   */
   public BufferedImage getBackgroundImage(){
     return backgroundImage;
   }
   
+  /**
+   * @return Dialogue text.
+   */
   public String getDialogueText(){
     return dialogueText;
   }
   
+  /**
+   * @return List of choices.
+   */
   public ArrayList<String> getChoices(){
     return choices;
   }
 
+  /**
+   * @return Where each choice leads to.
+   */
   public ArrayList<Integer> getLead(){
     return lead;
   }

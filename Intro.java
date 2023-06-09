@@ -5,17 +5,23 @@ import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
 
-/*
- * Displays the first screen - including the splash screen, menu, credits, and the start game button
+/**
+ * Displays the first screen - including the splash screen, menu, credits, and the start game button.
  */
 public class Intro extends Screen {
+    /** Graphics component */
     private Drawing draw;
+    /** Mouse coordinates */
     private int x, y;
 
-    // 0 is splash screen, 1 is menu, 2 is play, 3 is credits, 4 is exit
-    int state = 0;
-    int choice = 0;
+    /** Represents the current state of the game. 0 is splash screen, 1 is menu, 2 is play, 3 is credits, 4 is exit. */
+    private int state = 0;
+    /** Current choice in menu. */
+    private int choice = 0;
 
+    /**
+     * Displays the first screen - adds the Drawing component to the JFrame.
+     */
     public Intro() {
         super();
 
@@ -39,6 +45,9 @@ public class Intro extends Screen {
         draw.repaint();
     }
 
+    /**
+     * Registers mouse clicks.
+     */
     public void mouseClicked(MouseEvent e) {
         if (state == 0) {
             // menu
@@ -50,6 +59,9 @@ public class Intro extends Screen {
         draw.repaint();
     }
 
+    /**
+     * Handles keys pressed. Generally, WASD is to move and M is for progression / selection.
+     */
     public void keyTyped(KeyEvent e) {
         if (state == 1) {
             if (choice < 2 && e.getKeyChar() == 's')
@@ -71,7 +83,14 @@ public class Intro extends Screen {
         }
     }
 
+    /**
+     * Graphics drawing component.
+     */
     class Drawing extends JComponent {
+        /**
+         * Displays the splash screen.
+         * @param g The Graphics component drawn onto.
+         */
         public void splashScreen(Graphics g) {
             Font customFont = null;
             try {
@@ -113,6 +132,10 @@ public class Intro extends Screen {
             }
         }
 
+        /**
+         * Displays the menu.
+         * @param g The Graphics component drawn onto.
+         */
         public void menu(Graphics g) {
             Font customFont = null;
             try {
@@ -142,10 +165,18 @@ public class Intro extends Screen {
             g.drawString("*", 320, y);
         }
 
+        /**
+         * Starts the game at the appropriate level.
+         * @param g The Graphics component drawn onto.
+         */
         public void play(Graphics g){
             Main.game.setState(Main.game.level);
         }
 
+        /**
+         * Displays the credits.
+         * @param g The Graphics component drawn onto.
+         */
         public void credits(Graphics g) {
             Font customFont = null;
             try {
@@ -166,6 +197,10 @@ public class Intro extends Screen {
             g.drawString("Press M to go back to the menu", 50, 250);
         }
 
+        /**
+         * Final screeen before exiting the game.
+         * @param g The Graphics component drawn onto.
+         */
         public void exit(Graphics g) {
             Font customFont = null;
             try {
@@ -184,6 +219,10 @@ public class Intro extends Screen {
             g.drawString("Press M to exit", 50, 150);
         }
 
+        /**
+         * Draws the appropriate screen, depends on state.
+         * @param g The Graphics component drawn onto.
+         */
         public void paint(Graphics g) {
             if (state == 0) {
                 splashScreen(g);
@@ -198,10 +237,4 @@ public class Intro extends Screen {
             }
         }
     }
-
-    /*
-     * public static void main(String[] args){
-     * new Splash();
-     * }
-     */
 }

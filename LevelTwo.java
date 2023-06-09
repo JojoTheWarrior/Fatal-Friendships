@@ -5,26 +5,45 @@ import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
 
+/**
+ * Diplays the second screen - contains predialogue and the maze game.
+ */
 public class LevelTwo extends Screen {
-    Drawing draw;
+    /** The graphics component. */
+    private Drawing draw;
 
-    // for state: 0 is the dialogue, 1 is the maze
-    private int state, mazeloc;
-    private int mouse_x, mouse_y;
-    private boolean [][] canExit = new boolean[3][3];
+    /** The game state. */
+    private int state;
+    /** Character location in the maze. */
+    private int mazeloc;
+    /** Mouse x-coordinate on the screen. */
+    private int mouse_x;
+    /** Mouse y-coordinate on the screen. */
+    private int mouse_y;
+    /** Array representing whether you can exit each room. */
+    private boolean [][] canExit;
 
-    // dialogues variable
+    /** Lines of dialogue. */
     private Dialogue[] dialogues;
+    /** Total lines of dialogue - size of the dialogues array. */
     private final int TOTAL_LINES = 12;
-    private int dialogueIndex, choiceIndex;
+    /** Current dialogue index. */
+    private int dialogueIndex;
+    /** Current choice selection, if any. */
+    private int choiceIndex;
 
-    // represents james' coordinates, from the top left corner
-    private int james_x, james_y;
+    /** Character x-coordinate on the screen. */
+    private int james_x;
+    /** Character y-coordinate on the screen. */
+    private int james_y;
+    /** The current answer hovered over. */
     private int current_answer;
+    /** How much time is left on the timer for an incorrect answer. */
     private int incorrect_cooldown;
+    /** Maximum number of characters in a line before a new line. */
     private final int MAX_CHAR = 55;
 
-    // maze variable
+    /** Each cell in the maze contains one question. */
     private Question [][] maze = {
         {
             new Question("Instead of using your friends, how should you value them?", "Manipulating and taking advantage of their kindness", "Prioritizing your own desires above other's", "Using friends as a mean to achieve personal goals", "Recognizing their worth, appreciating their friendship, and supporting them", 4),
@@ -46,6 +65,7 @@ public class LevelTwo extends Screen {
         }
     };
 
+    /** Creates a new Level 2. */
     public LevelTwo() {
         dialogueIndex = 1;
         choiceIndex = 0;
@@ -58,7 +78,7 @@ public class LevelTwo extends Screen {
         current_answer = -1;
         mazeloc = 1;
 
-        // for (int i = 0; i < 3; i++) for (int j = 0; j < 3; j++) canExit[i][j] = true;
+        canExit = new boolean[3][3];
 
         // initializing dialogues for narrator 
         dialogues = new Dialogue[TOTAL_LINES + 1];
@@ -111,11 +131,19 @@ public class LevelTwo extends Screen {
         frame.add(draw, BorderLayout.CENTER);
     }
 
+    /**
+     * Handles mouse movement.
+     * @param e The mouse move event that triggered this method.
+     */
     public void mouseMoved(MouseEvent e){
         mouse_x = e.getX();
         mouse_y = e.getY();
     }
 
+    /** 
+     * Handles mouse clicks.
+     * @param e The moues click event that triggered this method.
+     */
     public void mouseClicked(MouseEvent e) {
         if (state == 3){
              // end scene
@@ -221,6 +249,10 @@ public class LevelTwo extends Screen {
         draw.repaint();
     }
 
+    /**
+     * Handles a key typed.
+     * @param e The key type event that triggered this method.
+     */
     public void keyTyped(KeyEvent e) {
         if (state == 0){
             // dialogue
@@ -279,7 +311,11 @@ public class LevelTwo extends Screen {
         draw.repaint();
     }
 
+    /**
+     * The graphical component, drawn using a Grahpics object.
+     */
     class Drawing extends JComponent {
+        /** Draws on the screen, depends on the state variable. */
         public void paint(Graphics g) {
             // renders fonts
             Font nameFont = null;

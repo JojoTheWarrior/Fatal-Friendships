@@ -7,17 +7,28 @@ import java.io.*;
 import java.util.*;
 
 /**
- * 
+ * Displays the first level - purely dialogue to introduce the characters and the premise of the game.
  */
 public class LevelOne extends Screen {
+    /** Graphics component. */
     private Drawing draw;
+    /** List of dialogues. */
     private Dialogue[] dialogues;
+    /** The current dialogue spoken. */
     private int dialogueIndex;
+    /** The current choice selected. */
     private int choiceIndex;
+    /** Total lines in the script. */
     private final int TOTAL_LINES = 72;
+    /** Maximum number of characters permissible in one line before making a new line. */
     private final int MAX_CHAR = 55;
+    /** Mouse coordinates. */
     private int x, y;
 
+    /** 
+     * Creates a new LevelOne.
+     * Initializes the script with all lines of dialouge.
+     */
     public LevelOne(){
         super();
 
@@ -194,6 +205,10 @@ public class LevelOne extends Screen {
         frame.add(draw, BorderLayout.CENTER);
     }
 
+    /**
+     * Handles keys pressed.
+     * @param e The KeyEvent that triggered this method.
+     */
     public void keyTyped(KeyEvent e){
         if (dialogueIndex == -1) return;
 
@@ -227,6 +242,10 @@ public class LevelOne extends Screen {
         }
     }
 
+    /**
+     * Handles mouse movement.
+     * @param e The mouse movement that triggered this method.
+     */
     public void mouseMoved(MouseEvent e){
         x = e.getX();
         y = e.getY();
@@ -234,6 +253,10 @@ public class LevelOne extends Screen {
         draw.repaint();
     }
 
+    /**
+     * Handles mouse clicks.
+     * @param e The mouse click that triggered this method.
+     */
     public void mouseClicked(MouseEvent e){
         if (dialogueIndex == -1){
             // end scene
@@ -248,7 +271,14 @@ public class LevelOne extends Screen {
         } 
     }
 
+    /**
+     * The graphical component.
+     */
     class Drawing extends JComponent {
+        /**
+         * Paints the screen, depending on the state.
+         * @param g The Graphics component drawn onto.
+         */
         public void paint(Graphics g){
             // renders fonts
             Font nameFont = null;

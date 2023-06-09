@@ -6,27 +6,73 @@ import javax.imageio.*;
 import java.io.*;
 import java.util.*;
 
+/** 
+ * Displays the third screen - contains predialogue, rock dodging game, and ending dialogue.
+ */
 public class LevelThree extends Screen {
+    /** The graphics component. */
     private Drawing draw;
+    /** The game state. */
     private int state;
-    private int dialogueIndex, choiceIndex;
+    /** The index of the dialogue currently being displayed. */
+    private int dialogueIndex;
+    /** The index of the current choice. */
+    private int choiceIndex;
+    /** The script containing all the dialogues. */
     private Dialogue[] dialogues;
+    /** The total number of lines in the dialogue - size of the dialogues array. */
     private final int TOTAL_LINES = 39;
+    /** Maximum number of characters that can be displayed in a line before making a new line. */
     private final int MAX_CHAR = 55;
 
-    // variables for the battle
-    private int max_x, james_x, james_y, james_speed, max_goal, max_speed;
-    private ArrayList<Integer> rocks_x, rocks_y, rocks_falling;
-    private int max_iq, james_hp;
-    // 0 is throwing rocks normally, 1 speeds up, 2 becomes different speeds of rock, 3 becomes different speeds of movement
+    /** Max's x-coordinate on the screen. */
+    private int max_x;
+    /** James' x-coordinate on the screen. */
+    private int james_x;
+    /** James' y-coordinate on the screen */
+    private int james_y;
+    /** The speed that James can move at. */
+    private int james_speed;
+    /** The next x-coordinate that Max wants to throw a rock from. */
+    private int max_goal;
+    /** The speed that Max moves at. */
+    private int max_speed;
+    /** The rocks' x-positions. */
+    private ArrayList<Integer> rocks_x;
+    /** The rocks' y-positions. */
+    private ArrayList<Integer> rocks_y;
+    /** The speed that the rocks are falling at. */
+    private ArrayList<Integer> rocks_falling;
+    /** Max's IQ, out of 100. */
+    private int max_iq;
+    /** James' HP, out of 100. */
+    private int james_hp;
+    /** The mode that Max is in, during the battle. 0 is throwing rocks normally, 1 speeds up, 2 becomes different speeds of rock, 3 becomes different speeds of movement and much faster rock speed. */
     private int max_state;
-    private int james_immunity, incorrect_cooldown;
-    private int lose_timer, win_timer, end_timer;
-    private ArrayList<Question> mcq, og_mcq;
-    private int questionIndex, questionChoiceIndex;
+    /** The amount of time left on James' immunity. */
+    private int james_immunity;
+    /** The amount of time left on James' incorrect answer cooldown. */
+    private int incorrect_cooldown;
+    /** The amount of time left on the losing timer. */
+    private int lose_timer;
+    /** The amount of time left on the winning timer. */
+    private int win_timer;
+    /** The amount of time left on the ending timer. */
+    private int end_timer;
+    /** The multiple choice questions left in the game (shuffled). */
+    private ArrayList<Question> mcq;
+    /** The multiple choice questions that are originally in the game. */
+    private ArrayList<Question> og_mcq;
+    /** The question index that the game is currently at (out of 200). */
+    private int questionIndex;
+    /** The index of the choice that the player is currently selecting. */
+    private int questionChoiceIndex;
+    /** Maximum number of characters that can be displayed in one line of the question field. */
     private final int MAX_CHAR_Q = 45;
+    /** Maximum number of characters that can be displayed in one line of the answer field. */
     private final int MAX_CHAR_A = 40;
 
+    /** Creates a new Level Three. */
     public LevelThree(){
         draw = new Drawing();
         state = 0;
@@ -194,7 +240,9 @@ public class LevelThree extends Screen {
         frame.setVisible(true);
     }
 
+    /** The graphical component - uses a Graphics component to draw. */
     class Drawing extends JComponent {
+        /** Draws on the screen - depends on state. */
         public void paint(Graphics g){
             if (state == 0){
                 // dialogue scene
@@ -768,6 +816,10 @@ public class LevelThree extends Screen {
         }
     }
     
+    /**
+     * Handles key pressed.
+     * @param e The key pressed event that triggered this method.
+     */
     public void keyPressed(KeyEvent e){
         if (state == 0){
             // dialogue scene
