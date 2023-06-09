@@ -7,11 +7,12 @@ import java.io.*;
 
 public class Main implements MouseMotionListener, MouseListener, KeyListener {
     public static Main game;
-    public int x, y, z = 0;
 
     // 0 is splash, 1 is level one, 2 is level 2, 3 is level 3
-    public int state = 0;
-    public int choice = 0;
+    public int state;
+    public int choice;
+    public boolean spoke_to_daniel = false;
+    public int level;
 
     JFrame frame;
     JPanel panel;
@@ -19,13 +20,17 @@ public class Main implements MouseMotionListener, MouseListener, KeyListener {
     Screen currentScreen;
 
     public Main() {
+        state = 0;
+        choice = 0;
+        level = 1;
+
         frame = new JFrame("Fatal Friendships");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 520);
 
         panel = new JPanel(new BorderLayout());
 
-        currentScreen = new LevelOne();
+        currentScreen = new Intro();
 
         panel.add(currentScreen.getFrame(), BorderLayout.CENTER);
 
@@ -38,7 +43,7 @@ public class Main implements MouseMotionListener, MouseListener, KeyListener {
 
         panel.remove(currentScreen.getFrame());
 
-        Screen currentScreen = new Screen();
+        currentScreen = new Screen();
 
         if (state == 0){
             currentScreen = new Intro();
@@ -46,6 +51,8 @@ public class Main implements MouseMotionListener, MouseListener, KeyListener {
             currentScreen = new LevelOne();
         } else if (state == 2){
             currentScreen = new LevelTwo();
+        } else if (state == 3){
+            currentScreen = new LevelThree();
         }
 
         panel.add(currentScreen.getFrame(), BorderLayout.CENTER);

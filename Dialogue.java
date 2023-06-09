@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * This is the general class for dialogue. It has five attributes, which represent the name of the character speaking, the 
  * image used for the character's icon (since there may be different emoticons), the background image, the dialogue text, and the choices (if any) that the user can pick from. 
- * The Dialogue class is used in Level 1, Level 3 and Level 4.
+ * The Dialogue class is used in Level 1, Level 2, and Level 3.
  */
 public class Dialogue {
   private String characterName;

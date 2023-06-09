@@ -27,15 +27,15 @@ public class LevelOne extends Screen {
         String[] noChoices = {};
         dialogues[1] = new Dialogue("James", "Hey Max! It's good to see you this lovely Sunday afternoon.", noChoices, 2, "james_normal_happy", "theatre");
         
-        dialogues[2] = new Dialogue("Max", "Hello, James. Any ideas on which movie we should watch today?", noChoices, 3, "max", "theatre");
+        dialogues[2] = new Dialogue("Max", "Hello, James. Any ideas on which movie we should watch today?", noChoices, 3, "max_normal", "theatre");
 
         String[] choices3 = {"The Super Mario Bros. Movie", "Guardians of the Galaxy Vol. 3", "John Wick: Chapter 4", "Halloween Ends"};
         int[] lead3 = {4, 4, 4, 4};
         dialogues[3] = new Dialogue("James", "Hmm... there are many good options. I think we should watch:", choices3, lead3, "james_normal_thinking", "theatre");
 
-        dialogues[4] = new Dialogue("Max", "Nah, I'd rather watch Barbie. I really love Barbie...", noChoices, 5, "max", "theatre");
+        dialogues[4] = new Dialogue("Max", "Nah, I'd rather watch Barbie. I really love Barbie...", noChoices, 5, "max_smirk", "theatre");
 
-        dialogues[5] = new Dialogue("Max", "...and honestly, I don't think your choice is very good. Let's watch Barbie, okay?", noChoices, 6, "max", "theatre");
+        dialogues[5] = new Dialogue("Max", "...and honestly, I don't think your choice is very good. Let's watch Barbie, okay?", noChoices, 6, "max_bored", "theatre");
 
         String[] choices6 = {"Okay", "I would rather not watch Barbie, though..."};
         int[] lead6 = {9, 7};
@@ -45,11 +45,11 @@ public class LevelOne extends Screen {
 
         dialogues[8] = new Dialogue("James", "(With Max, it's not like my choices really matter, anyway...)", noChoices, 6, "james_normal_rolling", "theatre");
 
-        dialogues[9] = new Dialogue("Max", "Great! It's decided then - we're watching Barbie!", noChoices, 10, "max", "theatre");
+        dialogues[9] = new Dialogue("Max", "Great! It's decided then - we're watching Barbie!", noChoices, 10, "max_smirk", "theatre");
 
-        dialogues[10] = new Dialogue("Max", "Also, one more thing - I left my wallet at home.", noChoices, 11, "max", "theatre");
+        dialogues[10] = new Dialogue("Max", "Also, one more thing - I left my wallet at home.", noChoices, 11, "max_normal", "theatre");
         
-        dialogues[11] = new Dialogue("Max", "Do you mind paying for my ticket today?", noChoices, 12, "max", "theatre");
+        dialogues[11] = new Dialogue("Max", "Do you mind paying for my ticket today?", noChoices, 12, "max_normal", "theatre");
 
         String[] choices12 = {"Uhh... sure.", "No way, pay for it yourself!", "Will you at least pay me back?"};
         int[] lead12 = {15, 13, 14};
@@ -60,7 +60,7 @@ public class LevelOne extends Screen {
 
         dialogues[14] = new Dialogue("James", "(He'll probably say yes... and never pay me back anyway)", noChoices, 12, "james_normal_rolling", "theatre");
 
-        dialogues[15] = new Dialogue("Max", "Alright.", noChoices, 16, "max", "theatre");
+        dialogues[15] = new Dialogue("Max", "Alright.", noChoices, 16, "max_smirk", "theatre");
 
         dialogues[16] = new Dialogue("James", "(Oh no... I'm broke now. That was the last of my allowance...)", noChoices, 17, "james_normal_neutral", "theatre");
 
@@ -76,13 +76,13 @@ public class LevelOne extends Screen {
 
         dialogues[22] = new Dialogue("James", "Hello? Who is it?", noChoices, 23, "james_tired_rolling", "max_room");
 
-        dialogues[23] = new Dialogue("Max", "Yo! It's me!", noChoices, 24, "max", "max_room");
+        dialogues[23] = new Dialogue("Max", "Yo! It's me!", noChoices, 24, "max_normal", "max_room");
 
-        dialogues[24] = new Dialogue("Max", "I couldn't sleep because I kept thinking about Barbie!", noChoices, 25, "max", "max_room");
+        dialogues[24] = new Dialogue("Max", "I couldn't sleep because I kept thinking about Barbie!", noChoices, 25, "max_normal", "max_room");
 
-        dialogues[25] = new Dialogue("Max", "Oh, my beloved Barbie~~, keeping me up late at night.", noChoices, 26, "max", "max_room");
+        dialogues[25] = new Dialogue("Max", "Oh, my beloved Barbie~~, keeping me up late at night.", noChoices, 26, "max_smirk", "max_room");
 
-        dialogues[26] = new Dialogue("Max", "Anyways, I need you to keep me company.", noChoices, 27, "max", "max_room");
+        dialogues[26] = new Dialogue("Max", "Anyways, I need you to keep me company.", noChoices, 27, "max_bored", "max_room");
 
         String[] choices27 = {"Okay, fine."};
         int[] lead27 = {28};
@@ -90,9 +90,9 @@ public class LevelOne extends Screen {
 
         dialogues[28] = new Dialogue("James", "What do you want to talk about?", noChoices, 29, "james_tired_neutral", "james_room");
 
-        dialogues[29] = new Dialogue("Max", "Ok so let's talk about Barbie. I really liked the plot of the Barbie movie, and I thought that it did a great job encapsulating the wittiness and sassiness that the original Barbie characters display. The movie did such a great job at capturing the characters' essence that I was even brought back to my childhood.", noChoices, 30, "max", "max_room");
+        dialogues[29] = new Dialogue("Max", "Ok so let's talk about Barbie. I really liked the plot of the Barbie movie, and I thought that it did a great job encapsulating the wittiness and sassiness that the original Barbie characters display. The movie did such a great job at capturing the characters' essence that I was even brought back to my childhood.", noChoices, 30, "max_angry", "max_room");
 
-        dialogues[30] = new Dialogue("Max", "Now, don't even get me started on the plot twist. When Barbie and Ken discovered the joys and perils of living amongst humans - which was so different from their ideal life living in Barbie Land - I was so moved by the human struggles that they were going through and how that represents the perpetual coming-of-age change that Barbie fans go through as they grow up and understand the real world.", noChoices, 31, "max", "max_room");
+        dialogues[30] = new Dialogue("Max", "Now, don't even get me started on the plot twist. When Barbie and Ken discovered the joys and perils of living amongst humans - which was so different from their ideal life living in Barbie Land - I was so moved by the human struggles that they were going through and how that represents the perpetual coming-of-age change that Barbie fans go through as they grow up and understand the real world.", noChoices, 31, "max_angry", "max_room");
 
         dialogues[31] = new Dialogue("Narrator", "Max continued to speak about Barbie for the next hour, until he eventually tired himself out and fell asleep.", noChoices, 32, "narrator", "narrator");
 
@@ -106,35 +106,35 @@ public class LevelOne extends Screen {
 
         dialogues[36] = new Dialogue("James", "(Well, at least class is over now.)", noChoices, 37, "james_tired_happy", "classroom");
 
-        dialogues[37] = new Dialogue("Daniel", "Hey! My name's Daniel. You're James, right? I noticed you were looking really tired in class today.", noChoices, 38, "daniel", "classroom");
+        dialogues[37] = new Dialogue("Daniel", "Hey! My name's Daniel. You're James, right? I noticed you were looking really tired in class today.", noChoices, 38, "daniel_happy", "classroom");
 
-        dialogues[38] = new Dialogue("Daniel", "I was just wondering if you were alright.", noChoices, 39, "daniel", "classroom");
+        dialogues[38] = new Dialogue("Daniel", "I was just wondering if you were alright.", noChoices, 39, "daniel_happy", "classroom");
 
         dialogues[39] = new Dialogue("James", "Yeah, I'm feeling fine.", noChoices, 40, "james_tired_neutral", "classroom");
 
-        dialogues[40] = new Dialogue("Daniel", "Would you like to eat something?", noChoices, 41, "daniel", "classroom");
+        dialogues[40] = new Dialogue("Daniel", "Would you like to eat something?", noChoices, 41, "daniel_happy", "classroom");
 
         dialogues[41] = new Dialogue("James", "I would like to, but I don't have any money on me...", noChoices, 42, "james_tired_neutral", "classroom");
 
-        dialogues[42] = new Dialogue("Daniel", "Oh, no worries, I'll buy you something. It's on me. What would you like?", noChoices, 43, "daniel", "classroom");
+        dialogues[42] = new Dialogue("Daniel", "Oh, no worries, I'll buy you something. It's on me. What would you like?", noChoices, 43, "daniel_happy", "classroom");
 
         String[] choices43 = {"Burger", "Salad", "Hot Dog", "You really don't have to do that"};
         int[] lead43 = {44, 45, 46, 47};
         dialogues[43] = new Dialogue("James", "...", choices43, lead43, "james_tired_thinking", "classroom");
 
-        dialogues[44] = new Dialogue("Daniel", "The burgers here aren't as good as McDonald's, but they're alright.", noChoices, 49, "daniel", "classroom");
+        dialogues[44] = new Dialogue("Daniel", "The burgers here aren't as good as McDonald's, but they're alright.", noChoices, 49, "daniel_neutral", "classroom");
 
-        dialogues[45] = new Dialogue("Daniel", "The healthy choice! I think I'll grab a salad for myself, too.", noChoices, 49, "daniel", "classroom");
+        dialogues[45] = new Dialogue("Daniel", "The healthy choice! I think I'll grab a salad for myself, too.", noChoices, 49, "daniel_happy", "classroom");
 
-        dialogues[46] = new Dialogue("Daniel", "I love hot dogs! I would choose that, too.", noChoices, 49, "daniel", "classroom");
+        dialogues[46] = new Dialogue("Daniel", "I love hot dogs! I would choose that, too.", noChoices, 49, "daniel_happy", "classroom");
 
-        dialogues[47] = new Dialogue("Daniel", "No, it's really alright. I insist.", noChoices, 43, "daniel", "classroom");
+        dialogues[47] = new Dialogue("Daniel", "No, it's really alright. I insist.", noChoices, 43, "daniel_happy", "classroom");
 
         dialogues[48] = new Dialogue("James", "(Daniel is really kind, isn't he? If only Max was more like him.)", noChoices, 43, "james_tired_happy", "classroom");
 
-        dialogues[49] = new Dialogue("Daniel", "Enjoy your meal!", noChoices, 50, "daniel", "classroom");
+        dialogues[49] = new Dialogue("Daniel", "Enjoy your meal!", noChoices, 50, "daniel_happy", "classroom");
 
-        dialogues[50] = new Dialogue("Daniel", "By the way - if you don't mind me asking - why don't you carry any money on you? Don't you have an allowance?", noChoices, 51, "daniel", "classroom");
+        dialogues[50] = new Dialogue("Daniel", "By the way - if you don't mind me asking - why don't you carry any money on you? Don't you have an allowance?", noChoices, 51, "daniel_neutral", "classroom");
 
         String[] choices51 = {"Tell a lie", "Tell the truth"};
         int[] lead51 = {52, 54};
@@ -142,29 +142,29 @@ public class LevelOne extends Screen {
 
         dialogues[52] = new Dialogue("James", "I just left it at home today.", noChoices, 53, "james_tired_neutral", "classroom");
 
-        dialogues[53] = new Dialogue("Daniel", "Ah. I see.", noChoices, 63, "daniel", "classroom");
+        dialogues[53] = new Dialogue("Daniel", "Ah. I see.", noChoices, 63, "daniel_neutral", "classroom");
 
         dialogues[54] = new Dialogue("James", "My friend Max asked me to buy him a movie ticket yesterday, which used up the last of my cash this week.", noChoices, 55, "james_tired_neutral", "classroom");
 
-        dialogues[55] = new Dialogue("Daniel", "He'll pay you back, right?", noChoices, 56, "daniel", "classroom");
+        dialogues[55] = new Dialogue("Daniel", "He'll pay you back, right?", noChoices, 56, "daniel_neutral", "classroom");
 
         dialogues[56] = new Dialogue("James", "Max usually doesn't pay me back.", noChoices, 57, "james_tired_rolling", "classroom");
 
-        dialogues[57] = new Dialogue("Daniel", "\"Usually\"? Does Max do this type of thing often?", noChoices, 58, "daniel", "classroom");
+        dialogues[57] = new Dialogue("Daniel", "\"Usually\"? Does Max do this type of thing often?", noChoices, 58, "daniel_neutral", "classroom");
 
         dialogues[58] = new Dialogue("James", "Yeah, I guess he does this quite often.", noChoices, 59, "james_tired_neutral", "classroom");
 
         dialogues[59] = new Dialogue("James", "He also kept me up all night yesterday, which is why I was so tired today.", noChoices, 60, "james_tired_neutral", "classroom");
 
-        dialogues[60] = new Dialogue("Daniel", "Wow.", noChoices, 61, "daniel", "classroom");
+        dialogues[60] = new Dialogue("Daniel", "Wow.", noChoices, 61, "daniel_neutral", "classroom");
 
-        dialogues[61] = new Dialogue("Daniel", "I gotta say, this person sounds like a pretty toxic friend.", noChoices, 62, "daniel", "classroom");
+        dialogues[61] = new Dialogue("Daniel", "I gotta say, this person sounds like a pretty toxic friend.", noChoices, 62, "daniel_neutral", "classroom");
 
-        dialogues[62] = new Dialogue("Daniel", "If I were you, I would have a serious talk with him and perhaps consider ending this relationship if it remains toxic.", noChoices, 63, "daniel", "classroom");
+        dialogues[62] = new Dialogue("Daniel", "If I were you, I would have a serious talk with him and perhaps consider ending this relationship if it remains toxic.", noChoices, 63, "daniel_neutral", "classroom");
 
         dialogues[63] = new Dialogue("James", "...", noChoices, 64, "james_tired_neutral", "classroom");
 
-        dialogues[64] = new Dialogue("Daniel", "Well, I'll see you around, James. Hope that food made you feel a little better!", noChoices, 65, "daniel", "classroom");
+        dialogues[64] = new Dialogue("Daniel", "Well, I'll see you around, James. Hope that food made you feel a little better!", noChoices, 65, "daniel_happy", "classroom");
 
         dialogues[65] = new Dialogue("James", "Yes, thank you for the food. I'll see you later.", noChoices, 66, "james_tired_happy", "classroom");
 
@@ -207,10 +207,21 @@ public class LevelOne extends Screen {
         } else if (e.getKeyChar() == 'w'){
             int s = d.getChoices().size();
             if (s == 0) return;
-            choiceIndex = (choiceIndex + s - 1) % s;
+            choiceIndex = (choiceIndex + s - 1) % s;    
             draw.repaint();
         } else if (e.getKeyChar() == 'm'){
+            // daniel
+            if (dialogueIndex == 51){
+                if (choiceIndex == 0) Main.game.spoke_to_daniel = false;
+                else Main.game.spoke_to_daniel = true;
+            }
+
             dialogueIndex = d.getLead().get(choiceIndex);
+            
+            if (dialogueIndex == -1){
+                Main.game.level = 2;
+            }
+
             choiceIndex = 0;
             draw.repaint();
         }
@@ -225,21 +236,16 @@ public class LevelOne extends Screen {
 
     public void mouseClicked(MouseEvent e){
         if (dialogueIndex == -1){
-
-            System.out.println("game 2");
             // end scene
             if (275 <= x && x <= 505 && 195 <= y && y <= 210){
                 // continue to level 2
                 Main.game.setState(2);
             }
             if (300 <= x && x <= 470 && 265 <= y && y <= 280){
-                System.out.println("game");
                 // return to menu
                 Main.game.setState(0);
             }
         } 
-        
-
     }
 
     class Drawing extends JComponent {
