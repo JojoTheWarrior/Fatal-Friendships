@@ -5,7 +5,7 @@ USER MANUAL
 Fatal Friendships is an educational game designated for ages 12 to 15 which teaches the user about healthy and unhealthy friendships.
 Run JoshuaWangAlynHuang_ICS4U_ISP.jar to play the game.
 
-![splash screen demo](https://github.com/JojoTheWarrior/Fatal-Friendships/tree/main/assets/img/splashscreen.png?raw=true)
+![splash screen demo](./splashscreen.png?raw=true)
 
 Controls
 Fatal Friendships utilizes the conventional WASD controls for movement and selection. The M key is used for progression and selection (replaces the usual Enter button). 
