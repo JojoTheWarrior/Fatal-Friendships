@@ -100,7 +100,7 @@ public class Main implements MouseMotionListener, MouseListener, KeyListener {
     }
 
     public void keyTyped(KeyEvent e) {
-
+        
     }
 
     public void keyPressed(KeyEvent e) {
